@@ -128,6 +128,8 @@
     <ClInclude Include="math\vec3.h" />
     <ClInclude Include="PixelBuffer.h" />
     <ClInclude Include="renderer\Renderer.h" />
+    <ClInclude Include="renderer\Scene.h" />
+    <ClInclude Include="renderer\solid\Solid.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\lib\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="renderer\Scene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

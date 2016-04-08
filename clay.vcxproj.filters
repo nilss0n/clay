@@ -36,6 +36,12 @@
     <ClInclude Include="renderer\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="renderer\solid\Solid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="math\vec3.cpp">
@@ -56,5 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\lib\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="renderer\Scene.cpp" />
   </ItemGroup>
 </Project>
