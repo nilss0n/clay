@@ -1,9 +1,17 @@
 #include "Renderer.h"
 #include <iostream>
+#include <vector>
+#include "Solid.h"
 
 using namespace math;
+std::vector<Solid> solids;
 
-Renderer::Renderer(PixelBuffer& pb) : pixel_buffer(pb) {}
+Renderer::Renderer(PixelBuffer& pb) : pixel_buffer(pb) {
+	
+	solids.push_back(create_cube(vec3(2,2,2), 1));
+	solids.push_back(create_sphere(vec3(0, 0, 0), 1));
+	solids.push_back(create_plane(vec3(0, -2, 0), vec3(0,1,0)));
+}
 
 Renderer::~Renderer() {}
 
@@ -22,30 +30,22 @@ Ray create_ray(int u, int v) {
 }
 
 
-float proximity(const vec3& pos, vec3 & color) {
+float proximity(const vec3& pos, Solid & solid) {
 	float dist = 100000.0f;
-	{
-		float d = length(pos - vec3(0, 0, 0)) - 1.0f;
+	for (auto && s : solids) {
+		float d = s.distance(pos);
 		if (d < dist) {
 			dist = d;
-			color = vec3(1, 0, 0);
-		}
-	}
-	{
-		float d = dot(vec3(0, 1, 0), pos - vec3(0, -2, 0));
-		if (d < dist) {
-			dist = d;
-			color = vec3(0, 1, 0);
+			solid = s;
 		}
 	}
 	return dist;
 }
 
-vec3 shade(const vec3 & p, const vec3 & col) {
-	//if (fmod(abs(p.x), 4.0f) < 0.1f) return vec3(1, 1, 1);
-	//if (fmod(abs(p.z), 4.0f) < 0.1f) return vec3(1, 1, 1);
-	//return vec3(0.5f, 0.5f, 0.5f);
-	return col;
+vec3 shade(const vec3 & p, const Solid & closest) {
+	vec3 n = closest.normal(p);
+	vec3 l = normalize(vec3(0, 10, 0) - p);
+	return (closest.color * 0.1f) + closest.color * dot(n, l);
 }
 
 vec3 background() {
@@ -56,10 +56,10 @@ vec3 ray_march(Ray r) {
 	float distance = 0.0f;
 	vec3 p = r.o;
 	// March to find intersection
-	vec3 col = vec3(1, 1, 1);
+	Solid closest;
 	while (distance < 10000) {
-		float prox = proximity(p, col);
-		if (prox < 0.01f) return shade(p, col);
+		float prox = proximity(p, closest);
+		if (prox < 0.01f) return shade(p, closest);
 
 		distance += prox;
 		p = r.o + (r.d * distance);

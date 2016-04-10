@@ -66,3 +66,8 @@ vec3 math::cross(const vec3& a, const vec3& b) {
 vec3 math::normalize(const vec3& v) {
 	return v / length(v);
 }
+
+
+vec3 math::abs(const vec3& v) {
+	return vec3(abs(v.x), abs(v.y), abs(v.z));
+}

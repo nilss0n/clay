@@ -114,6 +114,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -127,23 +128,22 @@
     <ClInclude Include="math\math.h" />
     <ClInclude Include="math\vec3.h" />
     <ClInclude Include="PixelBuffer.h" />
+    <ClInclude Include="renderer\Material.h" />
     <ClInclude Include="renderer\Renderer.h" />
-    <ClInclude Include="renderer\Scene.h" />
-    <ClInclude Include="renderer\solid\Solid.h" />
+    <ClInclude Include="renderer\Solid.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math\vec3.cpp" />
     <ClCompile Include="PixelBuffer.cpp" />
+    <ClCompile Include="renderer\Material.cpp" />
     <ClCompile Include="renderer\Renderer.cpp" />
+    <ClCompile Include="renderer\Solid.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\lib\glfw3.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="renderer\Scene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

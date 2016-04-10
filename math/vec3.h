@@ -41,6 +41,8 @@ namespace math{
 	vec3 cross(const vec3& a, const vec3& b);
 
 	vec3 normalize(const vec3& v);
+	
+	vec3 abs(const vec3& v);
 }
 
 #endif //CLAY_VEC3

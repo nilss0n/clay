@@ -36,10 +36,10 @@
     <ClInclude Include="renderer\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="renderer\solid\Solid.h">
+    <ClInclude Include="renderer\Solid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="renderer\Scene.h">
+    <ClInclude Include="renderer\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,11 +59,14 @@
     <ClCompile Include="renderer\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="renderer\Solid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="external\lib\glfw3.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="renderer\Scene.cpp" />
   </ItemGroup>
 </Project>
