@@ -44,7 +44,7 @@ float proximity(const vec3& pos, Solid & solid) {
 
 vec3 shade(const vec3 & p, const Solid & closest) {
 	vec3 n = closest.normal(p);
-	vec3 l = normalize(vec3(0, 10, 0) - p);
+	vec3 l = normalize(vec3(-10, 10, -10) - p);
 	return (closest.color * 0.1f) + closest.color * dot(n, l);
 }
 
